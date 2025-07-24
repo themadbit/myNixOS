@@ -1,25 +1,21 @@
-{ config, pkgs, ... }:
+{ lib,config, pkgs, ... }:
 
 {
   
   hardware.nvidia =  {
 
     modesetting.enable = true;
-    open = false;
+    # Use the opensource drivers
+    open = true;
     nvidiaSettings = true;
     dynamicBoost.enable = true;
     powerManagement.enable = true;
-    powerManagement.finegrained = true;
-    #nvidiaPersistenced = true;
+    powerManagement.finegrained = false;
+    # nvidiaPersistenced = true;
 
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-
-      nvidiaBusId = "PCI:1:0:0";
-    };
+    # Disable PRIME since I don't have dual GPUs
+    prime.offload.enable = false;
+    prime.sync.enable = false;
 
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       version = "575.64";
@@ -30,4 +26,27 @@
       persistencedSha256 = "sha256-QkDNQKwCsakZOLcSie1NBiFCM5e5NFGiIKtPSFeWdXs=";
     };
   };
+
+  # Enable OpenGL support
+  hardware.graphics = {
+    enable = true;      # Enable OpenGL support
+    enable32Bit = true; # Enable 32-bit DRI support (for older games/apps)
+  };
+
+  #TODO: get a better place for this
+
+  # AMD has better battery life with PPD over TLP:
+  # https://community.frame.work/t/responded-amd-7040-sleep-states/38101/13
+  services.power-profiles-daemon.enable = lib.mkDefault true;
+
+  # Adds the missing asus functionality to Linux.
+  # https://asus-linux.org/manual/asusctl-manual/
+  services = {
+    asusd = {
+      enable = lib.mkDefault true;
+      enableUserService = lib.mkDefault true;
+    };
+  };
+
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 }
