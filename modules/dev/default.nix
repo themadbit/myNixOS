@@ -11,6 +11,7 @@
     git
     tmux
     gh
+    ripgrep
 
     # editors
     vscode
