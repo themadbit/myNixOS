@@ -5,8 +5,7 @@
   hardware.nvidia =  {
 
     modesetting.enable = true;
-    # Use the opensource drivers
-    open = true;
+    open = true; # Use the opensource drivers
     nvidiaSettings = true;
     dynamicBoost.enable = true;
     powerManagement.enable = true;
