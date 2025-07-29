@@ -1,4 +1,4 @@
-Building and creating is configuration this work. Hard work for that matter.
+Building and creating this configuration is work! Hard work for that matter. Lots of it actually.
 
 It requires a lot of patience and understanding of the Nix ecosystem. You need to know every comma and every semicolon.
 
