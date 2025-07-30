@@ -6,7 +6,7 @@
     shellAliases = {
       # general aliases
       lg = "lazygit";
-      mkcd = "mkdir -p "$@"  && cd $_";
+      mkcd = ''mkdir -p "$@"  && cd $_'';
       src = "cd ~/src";
 
       # git aliases
