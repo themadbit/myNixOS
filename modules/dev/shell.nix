@@ -6,8 +6,8 @@
     shellAliases = {
       # general aliases
       lg = "lazygit";
-      mkcd = "mkdir -p \$1 && cd \$1";
-      src = "cd /src";
+      mkcd = "mkdir -p "$@"  && cd $_";
+      src = "cd ~/src";
 
       # git aliases
       grb = "git rebase";
@@ -15,6 +15,11 @@
       grbc = "git rebase --continue";
 
       gst = "git status";
+
+      gco = "git checkout";
+      gcb = "git checkout -b";
+      gcm = "git commit -m";
+      gca = "git commit --amend";
     };
   };
   users.defaultUserShell = pkgs.fish;
