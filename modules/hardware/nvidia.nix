@@ -32,7 +32,10 @@
   };
 
   # Don't remove this. Graphics won't work!
-  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+  services.xserver.videoDrivers = lib.mkDefault [
+    "nvidia"
+    "modesetting"
+  ];
 
   # Enable OpenGL support
   hardware.opengl = {
