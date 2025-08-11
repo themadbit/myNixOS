@@ -1,8 +1,13 @@
-{ lib,config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
-  
-  hardware.nvidia =  {
+
+  hardware.nvidia = {
 
     modesetting.enable = true;
     open = true; # Use the opensource drivers
@@ -26,9 +31,12 @@
     };
   };
 
+  # Don't remove this. Graphics won't work!
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+
   # Enable OpenGL support
-  hardware.graphics = {
-    enable = true;      # Enable OpenGL support
+  hardware.opengl = {
+    enable = true; # Enable OpenGL support
     enable32Bit = true; # Enable 32-bit DRI support (for older games/apps)
   };
 
@@ -47,5 +55,5 @@
     };
   };
 
-  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 }
+
