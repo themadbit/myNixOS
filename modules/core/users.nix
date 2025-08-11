@@ -1,13 +1,23 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   users.users.themadbit = {
     isNormalUser = true;
     description = "themadbit";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 }
+
