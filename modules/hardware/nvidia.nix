@@ -38,7 +38,7 @@
   ];
 
   # Enable OpenGL support
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true; # Enable OpenGL support
     enable32Bit = true; # Enable 32-bit DRI support (for older games/apps)
   };
