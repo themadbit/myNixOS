@@ -30,7 +30,7 @@
     openrgb
 
     # packages for astra - gnome performance monitor
-    gnomeExtensions.astra-monitor
+    gnomeExtensions.system-monitor
     libgtop
     nethogs
 
@@ -40,5 +40,6 @@
     slack
     spotify
     brave
+    virt-manager
   ];
 }
