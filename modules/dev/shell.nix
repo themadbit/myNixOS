@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   programs.fish = {
@@ -7,6 +12,8 @@
       # general aliases
       lg = "lazygit";
       src = "cd ~/src";
+      ngipkgs = "cd ~/src/ngipkgs/";
+      nixpkgs = "cd ~/src/nixpkgs/";
 
       # git aliases
       grb = "git rebase";
@@ -23,3 +30,4 @@
   };
   users.defaultUserShell = pkgs.fish;
 }
+
