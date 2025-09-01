@@ -28,6 +28,7 @@
     toybox
     wirelesstools
     openrgb
+    btop
 
     # packages for astra - gnome performance monitor
     gnomeExtensions.system-monitor
