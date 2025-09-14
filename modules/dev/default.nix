@@ -42,5 +42,7 @@
     spotify
     brave
     virt-manager
+    discord
+    obsidian
   ];
 }
