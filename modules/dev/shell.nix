@@ -30,4 +30,3 @@
   };
   users.defaultUserShell = pkgs.fish;
 }
-

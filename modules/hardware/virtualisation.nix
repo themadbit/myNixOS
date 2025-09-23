@@ -1,30 +1,41 @@
 {
   pkgs,
+  lib,
+  config,
   ...
 }:
 {
-  virtualisation.libvirtd = {
-    enable = true;
-    onBoot = "ignore";
-    onShutdown = "shutdown";
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = false;
-    };
+  options.hardware.disableKvm = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "Whether to disable KVM kernel modules (useful for VirtualBox compatibility)";
   };
 
-  virtualisation.virtualbox = {
-    host = {
-      enable = true;
-      enableKvm = true;
-      enableExtensionPack = true;
-      addNetworkInterface = true;
-    };
-    guest = {
-      enable = true;
-      clipboard = true;
-      dragAndDrop = true;
-      verbose = true;
-    };
-  };
+  config = lib.mkMerge [
+    (lib.mkIf config.hardware.disableKvm {
+      boot.blacklistedKernelModules = [
+        "kvm"
+        "kvm_amd"
+        "kvm_intel"
+      ];
+    })
+
+    {
+      virtualisation.virtualbox = {
+        host = {
+          enable = true;
+          enableExtensionPack = true;
+          addNetworkInterface = false;
+        };
+        guest = {
+          enable = true;
+          clipboard = true;
+          dragAndDrop = true;
+          verbose = true;
+        };
+      };
+
+      users.extraGroups.vboxusers.members = [ "themadbit" ];
+    }
+  ];
 }

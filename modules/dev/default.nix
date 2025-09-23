@@ -41,8 +41,11 @@
     slack
     spotify
     brave
-    virt-manager
     discord
     obsidian
+
+    # cloud
+    azure-cli
+    terraform
   ];
 }

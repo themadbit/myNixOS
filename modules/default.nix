@@ -9,4 +9,3 @@
     ./core/users.nix
   ];
 }
-
