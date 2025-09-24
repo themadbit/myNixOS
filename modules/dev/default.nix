@@ -3,6 +3,7 @@
   imports = [
     ./neovim.nix
     ./shell.nix
+    ./docker.nix
   ];
 
   environment.systemPackages = with pkgs; [
