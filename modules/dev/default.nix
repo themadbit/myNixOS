@@ -30,6 +30,7 @@
     wirelesstools
     openrgb
     btop
+    devenv
 
     # packages for astra - gnome performance monitor
     gnomeExtensions.system-monitor

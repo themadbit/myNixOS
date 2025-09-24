@@ -14,6 +14,11 @@
     "flakes"
   ];
 
+  nix.settings.trusted-users = [
+    "root"
+    "themadbit"
+  ];
+
   networking.hostName = "sava"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
