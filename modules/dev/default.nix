@@ -16,12 +16,20 @@
 
     # editors
     vscode
+    code-cursor
 
     # languages
     nodejs_24
-    python3
     gcc
     hugo
+    rustup
+    go
+
+    # python & packages
+    python313
+    python313Packages.tkinter
+    python313Packages.pip
+    basedpyright # basedpyright-langserver
 
     # utilities
     nixfmt-rfc-style
@@ -49,5 +57,8 @@
     # cloud
     azure-cli
     terraform
+    ansible
+    termius
+    kubernetes
   ];
 }
