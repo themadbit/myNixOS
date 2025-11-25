@@ -46,8 +46,9 @@
     nethogs
 
     # applications
-    kitty
     element-desktop
+    mattermost-desktop
+    kitty
     slack
     spotify
     brave
