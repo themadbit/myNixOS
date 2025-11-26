@@ -61,5 +61,6 @@
     ansible
     termius
     kubernetes
+    teleport_16
   ];
 }
