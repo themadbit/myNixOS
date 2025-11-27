@@ -62,5 +62,7 @@
     termius
     kubernetes
     teleport_16
+    kubernetes-helm
+    k9s
   ];
 }
