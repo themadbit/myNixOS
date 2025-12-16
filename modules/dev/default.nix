@@ -54,6 +54,7 @@
     brave
     discord
     obsidian
+    foliate
 
     # cloud
     azure-cli
@@ -64,5 +65,6 @@
     teleport_16
     kubernetes-helm
     k9s
+    google-cloud-sdk
   ];
 }
