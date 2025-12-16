@@ -12,8 +12,10 @@
       # general aliases
       lg = "lazygit";
       src = "cd ~/src";
+      sil = "cd ~/sil-src/";
       ngipkgs = "cd ~/src/ngipkgs/";
       nixpkgs = "cd ~/src/nixpkgs/";
+      k8s = "sudo k3s kubectl";
 
       # git aliases
       grb = "git rebase";
