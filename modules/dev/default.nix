@@ -40,6 +40,7 @@
     openrgb
     btop
     devenv
+    pre-commit
 
     # packages for astra - gnome performance monitor
     gnomeExtensions.system-monitor
@@ -63,7 +64,7 @@
     ansible
     termius
     kubernetes
-    teleport_16
+    teleport_17
     kubernetes-helm
     k9s
     google-cloud-sdk
