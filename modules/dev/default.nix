@@ -4,6 +4,7 @@
     ./neovim.nix
     ./shell.nix
     ./docker.nix
+    ./infra.nix
   ];
 
   environment.systemPackages = with pkgs; [
