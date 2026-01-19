@@ -68,5 +68,6 @@
     kubernetes-helm
     k9s
     google-cloud-sdk
+    awscli2
   ];
 }
