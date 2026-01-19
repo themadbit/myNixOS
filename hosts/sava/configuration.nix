@@ -7,7 +7,7 @@
   ];
 
   hardware.disableKvm = true;
-  powerManagement.enableSava = true;
+  powerManagement.enableSava = false;
 
   # Enable flakes
   nix.settings.experimental-features = [
@@ -40,7 +40,7 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm= {
+  services.displayManager.gdm = {
     enable = true;
     autoSuspend = false;
   };
