@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./neovim.nix
@@ -14,6 +17,7 @@
     tmux
     gh
     ripgrep
+    zellij
 
     # editors
     vscode
@@ -69,5 +73,6 @@
     k9s
     google-cloud-sdk
     awscli2
+    vagrant
   ];
 }
