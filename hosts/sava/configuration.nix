@@ -75,6 +75,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Allow insecure packages
+  nixpkgs.config.permittedInsecurePackages = [
+    "teleport-16.5.9"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

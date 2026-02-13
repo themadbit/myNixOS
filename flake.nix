@@ -5,6 +5,9 @@
     # NixOS official package source, using the nixos-25.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    # Pinned nixpkgs for Teleport v16 (older release with required features)
+    nixpkgs-teleport-16.url = "github:NixOS/nixpkgs/nixos-24.11";
+
     # Pre-commit hooks
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
@@ -14,12 +17,14 @@
     {
       self,
       nixpkgs,
+      nixpkgs-teleport-16,
       pre-commit-hooks,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-teleport-16 = nixpkgs-teleport-16.legacyPackages.${system};
     in
     {
       # Formatter for `nix fmt`
@@ -44,6 +49,9 @@
       # Please replace my-nixos with your hostname
       nixosConfigurations.sava = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = {
+          inherit pkgs-teleport-16;
+        };
         modules = [
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect

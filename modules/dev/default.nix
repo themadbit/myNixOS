@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-teleport-16,
   ...
 }:
 {
@@ -18,6 +19,7 @@
     gh
     ripgrep
     zellij
+    wl-clipboard
 
     # editors
     vscode
@@ -25,6 +27,7 @@
 
     # languages
     nodejs_24
+    gnumake42
     gcc
     hugo
     rustup
@@ -45,6 +48,8 @@
     btop
     devenv
     pre-commit
+    grim
+    flameshot
 
     # packages for astra - gnome performance monitor
     gnomeExtensions.system-monitor
@@ -68,11 +73,15 @@
     ansible
     termius
     kubernetes
-    teleport_17
     kubernetes-helm
+    eks-node-viewer
     k9s
     google-cloud-sdk
     awscli2
     vagrant
+    dive
+
+    # infrastructure - teleport v16 pinned from nixos-24.05
+    pkgs-teleport-16.teleport_16
   ];
 }
