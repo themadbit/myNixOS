@@ -20,6 +20,7 @@
     ripgrep
     zellij
     wl-clipboard
+    bash
 
     # editors
     vscode
@@ -37,6 +38,7 @@
     python313
     python313Packages.tkinter
     python313Packages.pip
+    python3Packages.pylibmc
     basedpyright # basedpyright-langserver
 
     # utilities
@@ -50,6 +52,8 @@
     pre-commit
     grim
     flameshot
+    libmemcached
+    pkg-config
 
     # packages for astra - gnome performance monitor
     gnomeExtensions.system-monitor
@@ -72,10 +76,6 @@
     terraform
     ansible
     termius
-    kubernetes
-    kubernetes-helm
-    eks-node-viewer
-    k9s
     google-cloud-sdk
     awscli2
     vagrant
