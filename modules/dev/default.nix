@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-teleport-16,
+  pkgs-unstable,
   ...
 }:
 {
@@ -9,6 +10,8 @@
     ./shell.nix
     ./docker.nix
     ./infra.nix
+    ./ollama.nix
+    ./display.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -33,16 +36,20 @@
     hugo
     rustup
     go
+    deno
 
     # python & packages
+    uv
+    ruff
     python313
-    python313Packages.tkinter
+    python313Packages.duckdb
+    python313Packages.pandas
     python313Packages.pip
     python3Packages.pylibmc
     basedpyright # basedpyright-langserver
 
     # utilities
-    nixfmt-rfc-style
+    nixfmt
     unzip
     toybox
     wirelesstools
@@ -53,14 +60,20 @@
     grim
     flameshot
     libmemcached
+    gradia
     pkg-config
+    jq
+    ntfs3g
+    glow
 
     # packages for astra - gnome performance monitor
     gnomeExtensions.system-monitor
+    gnome-tweaks
     libgtop
     nethogs
 
     # applications
+    insomnia
     element-desktop
     mattermost-desktop
     kitty
@@ -71,6 +84,13 @@
     obsidian
     foliate
 
+    #k8s
+
+    kubernetes
+    kubernetes-helm
+    eks-node-viewer
+    k9s
+
     # cloud
     azure-cli
     terraform
@@ -80,6 +100,14 @@
     awscli2
     vagrant
     dive
+    podman
+    podman-compose
+    render-cli
+
+    # ai
+    pkgs-unstable.claude-code
+    pkgs-unstable.opencode
+    github-copilot-cli
 
     # infrastructure - teleport v16 pinned from nixos-24.05
     pkgs-teleport-16.teleport_16
