@@ -22,12 +22,12 @@
     {
       virtualisation.virtualbox = {
         host = {
-          enable = true;
+          enable = false;
           enableExtensionPack = true;
           addNetworkInterface = false;
         };
         guest = {
-          enable = true;
+          enable = false;
           clipboard = true;
           dragAndDrop = true;
           verbose = true;

@@ -66,10 +66,6 @@
     ntfs3g
     glow
 
-    # packages for astra - gnome performance monitor
-    gnomeExtensions.system-monitor
-    gnome-tweaks
-    libgtop
     nethogs
 
     # applications

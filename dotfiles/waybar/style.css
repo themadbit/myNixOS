@@ -1,0 +1,89 @@
+@define-color bg #111318;
+@define-color surface #1c1f26;
+@define-color muted #5c6370;
+@define-color fg #c8ccd4;
+@define-color accent #8aa4c8;
+@define-color urgent #d08770;
+
+* {
+  font-family: "Adwaita Sans", "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: alpha(@bg, 0.85);
+  color: @fg;
+}
+
+tooltip {
+  background: @bg;
+  border: 1px solid @surface;
+  border-radius: 6px;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  color: @muted;
+  background: transparent;
+}
+
+#workspaces button.active {
+  color: @accent;
+}
+
+#workspaces button.urgent {
+  color: @urgent;
+}
+
+#workspaces button:hover {
+  background: @surface;
+  box-shadow: none;
+}
+
+#clock {
+  color: @fg;
+}
+
+#cpu,
+#memory,
+#custom-gpu {
+  padding: 0 8px;
+  color: @fg;
+}
+
+#cpu.warning,
+#memory.warning,
+#custom-gpu.warning {
+  color: @fg;
+}
+
+#cpu.critical,
+#memory.critical,
+#custom-gpu.critical {
+  color: @urgent;
+}
+
+#tray,
+#pulseaudio,
+#network,
+#battery {
+  padding: 0 10px;
+  color: @fg;
+}
+
+#pulseaudio.muted,
+#network.disconnected {
+  color: @muted;
+}
+
+#battery.warning:not(.charging) {
+  color: @urgent;
+}
+
+#battery.critical:not(.charging) {
+  color: @urgent;
+  font-weight: bold;
+}

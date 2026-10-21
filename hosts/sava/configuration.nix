@@ -36,22 +36,8 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm = {
-    enable = true;
-    autoSuspend = false;
-  };
-
-  services.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
-  };
+  # Desktop is Hyprland only (see modules/dev/display.nix); keyboard layout
+  # for the session is set in dotfiles/hypr/conf/input.lua.
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -73,22 +59,13 @@
   # services.xserver.libinput.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Allow insecure packages
-  nixpkgs.config.permittedInsecurePackages = [
-    "teleport-16.5.9"
-  ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-  ];
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+  };
 
   environment.variables = {
-    TELEPORT_LOGIN = "marktanui";
+    TELEPORT_USER = "marktanui";
   };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
