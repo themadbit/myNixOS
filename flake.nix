@@ -2,8 +2,11 @@
   description = "tanui's NixOS flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.11 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    # NixOS official package source, using the nixos-26.05 branch here
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
+    # Unstable nixpkgs for frequently updated packages
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Pinned nixpkgs for Teleport v16 (older release with required features)
     nixpkgs-teleport-16.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -17,6 +20,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       nixpkgs-teleport-16,
       pre-commit-hooks,
       ...
@@ -24,18 +28,31 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-teleport-16 = nixpkgs-teleport-16.legacyPackages.${system};
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
+      # Instantiate pinned nixpkgs with insecure package permission
+      pkgs-teleport-16 = import nixpkgs-teleport-16 {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "teleport-16.5.9" ];
+        };
+      };
     in
     {
       # Formatter for `nix fmt`
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      formatter.${system} = pkgs.nixfmt;
 
       # Pre-commit hooks
       checks.${system} = {
         pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
-            nixfmt-rfc-style.enable = true;
+            nixfmt.enable = true;
           };
         };
       };
@@ -50,7 +67,7 @@
       nixosConfigurations.sava = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit pkgs-teleport-16;
+          inherit pkgs-unstable pkgs-teleport-16;
         };
         modules = [
           # Import the previous configuration.nix we used,
